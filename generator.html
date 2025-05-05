@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Generator Link Undangan</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fffaf5;
+      color: #333;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    h1 {
+      color: #8c5b4a;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      background-color: #8c5b4a;
+      color: white;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+      word-break: break-word;
+    }
+    a {
+      color: #8c5b4a;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Generator Link Undangan</h1>
+  <p>Masukkan nama tamu undangan:</p>
+  <input type="text" id="guestName" placeholder="Contoh: Bapak Ahmad">
+  <br>
+  <button onclick="generateLink()">Buat Link</button>
+  <div id="result"></div>
+
+  <script>
+    function generateLink() {
+      const name = document.getElementById("guestName").value.trim();
+      if (name === "") {
+        alert("Masukkan nama terlebih dahulu.");
+        return;
+      }
+      const encodedName = encodeURIComponent(name);
+      const baseUrl = "https://rafisayd.github.io/undangan-yudha-meilia/";
+      const fullUrl = `${baseUrl}?to=${encodedName}`;
+      document.getElementById("result").innerHTML = `
+        <p>Link undangan:</p>
+        <a href="${fullUrl}" target="_blank">${fullUrl}</a>
+      `;
+    }
+  </script>
+</body>
+</html>
