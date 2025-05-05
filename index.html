@@ -224,6 +224,16 @@
 
     function openInvitation() {
       document.getElementById("opening").style.display = "none";
+      // Ambil nama dari parameter URL
+const urlParams = new URLSearchParams(window.location.search);
+const guestName = urlParams.get('to');
+
+// Tampilkan nama tamu (jika ada)
+if (guestName) {
+  const headerPara = document.querySelector("header p");
+  headerPara.innerHTML = `Kepada Yth. Bapak/Ibu/Saudara/i <strong>${decodeURIComponent(guestName)}</strong>`;
+}
+
       document.getElementById("main-content").style.display = "block";
       audio.play();
     }
