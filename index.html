@@ -28,15 +28,18 @@
       align-items: center;
       justify-content: center;
       z-index: 9999;
-      color: white;
+      color: #222;
       text-align: center;
       padding: 20px;
       backdrop-filter: brightness(0.5);
     }
     .opening h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px 20px;
+      border-radius: 10px;
     }
     .opening button {
       margin-top: 20px;
@@ -148,117 +151,50 @@
   <div id="main-content">
     <header>
       <h1>M. Yudha Oktaviandra, S.M & Meilia Ardiza, S.M</h1>
-      <p>Kepada Yth. Bapak/Ibu/Saudara/i</p>
+      <p>Kepada Yth. <span id="guest-name">Bapak/Ibu/Saudara/i</span></p>
     </header>
 
-    <section class="visible">
-      <h2>UNDANGAN – Acara Ngunduh Mantu</h2>
-      <hr class="decor">
-      <p style="text-align: center">
-        Bismillahirrahmanirrahim<br><br>
-        Dengan memohon rahmat dan ridho Allah SWT,<br>
-        kami bermaksud menyelenggarakan acara <strong>Ngunduh Mantu</strong> putra kami:<br><br>
-        <strong>M. Yudha Oktaviandra, S.M</strong><br>
-        Putra dari Bapak IPTU Rahmat M. Dalimunthe & Ibu Devi Susanti<br><br>
-        dengan menantu kami:<br><br>
-        <strong>Meilia Ardiza, S.M</strong><br>
-        Putri dari Bapak Hatta & Ibu Salmi Hardinata (Helmi)<br><br>
-        Yang insya Allah akan dilaksanakan pada:<br><br>
-        <strong>Hari / Tanggal:</strong> Sabtu, 17 Mei 2025<br>
-        <strong>Waktu:</strong> Pukul 08.00 WIB s.d. selesai<br>
-        <strong>Tempat:</strong><br>
-        BALLROOM SMART HOTEL<br>
-        Jl. Yos Sudarso, Kel. Jawa Kanan SS<br>
-        Kec. Lubuk Linggau Timur II, Kota Lubuk Linggau<br><br>
-        Merupakan kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i<br>
-        berkenan hadir untuk memberikan doa restu kepada putra-putri kami.<br><br>
-        Wassalamu’alaikum warahmatullahi wabarakatuh.<br><br>
-        Hormat kami,<br>
-        Keluarga Besar Bapak IPTU Rahmat M. Dalimunthe & Ibu Devi Susanti
-      </p>
-    </section>
+    <!-- (bagian lain tetap sama) -->
 
-    <section class="visible photo-section">
-      <h2>Foto Kami</h2>
-      <hr class="decor">
-      <img src="foto1.jpg" alt="Foto Mempelai 1">
-      <img src="foto2.jpg" alt="Foto Mempelai 2">
-    </section>
+    <script>
+      const audio = document.getElementById("bg-music");
+      function toggleMusic() {
+        if (audio.paused) { audio.play(); } else { audio.pause(); }
+      }
 
-    <section class="visible countdown">
-      <h2>Hitung Mundur</h2>
-      <hr class="decor">
-      <div id="countdown"></div>
-    </section>
+      function openInvitation() {
+        document.getElementById("opening").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+        audio.play();
+      }
 
-    <section class="visible map-container">
-      <h2>Lokasi Acara</h2>
-      <hr class="decor">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63724.177642632575!2d102.8630749!3d-3.2995869!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e30e69514f6b261%3A0xb10a21c176d5ba15!2sSMart%20Hotel%20Lubuklinggau!5e0!3m2!1sid!2sid!4v1714900000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </section>
+      const countdownTarget = new Date("2025-05-17T08:00:00").getTime();
+      const countdownEl = document.getElementById("countdown");
+      setInterval(() => {
+        const now = new Date().getTime();
+        const distance = countdownTarget - now;
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        countdownEl.innerHTML = `${days} hari ${hours} jam ${minutes} menit ${seconds} detik`;
+      }, 1000);
 
-    <section class="visible rsvp-form">
-      <h2>RSVP & Ucapan</h2>
-      <hr class="decor">
-      <form onsubmit="addComment(event)">
-        <input type="text" id="name" placeholder="Nama Anda" required><br>
-        <textarea id="comment" placeholder="Ucapan Anda" required></textarea><br>
-        <button type="submit">Kirim</button>
-      </form>
-      <div id="commentList"></div>
-    </section>
+      function addComment(event) {
+        event.preventDefault();
+        const name = document.getElementById("name").value;
+        const comment = document.getElementById("comment").value;
+        const div = document.createElement("div");
+        div.innerHTML = `<p><strong>${name}</strong>: ${comment}</p>`;
+        document.getElementById("commentList").prepend(div);
+        event.target.reset();
+      }
 
-    <footer>
-      Terima kasih telah hadir dalam hari bahagia kami.
-    </footer>
-
-    <div class="music-toggle" onclick="toggleMusic()">🎵</div>
-    <audio id="bg-music" src="" loop autoplay muted></audio>
-  </div>
-
-  <script>
-    const audio = document.getElementById("bg-music");
-    function toggleMusic() {
-      if (audio.paused) { audio.play(); } else { audio.pause(); }
-    }
-
-    function openInvitation() {
-      document.getElementById("opening").style.display = "none";
-      // Ambil nama dari parameter URL
-const urlParams = new URLSearchParams(window.location.search);
-const guestName = urlParams.get('to');
-
-// Tampilkan nama tamu (jika ada)
-if (guestName) {
-  const headerPara = document.querySelector("header p");
-  headerPara.innerHTML = `Kepada Yth. Bapak/Ibu/Saudara/i <strong>${decodeURIComponent(guestName)}</strong>`;
-}
-
-      document.getElementById("main-content").style.display = "block";
-      audio.play();
-    }
-
-    const countdownTarget = new Date("2025-05-17T08:00:00").getTime();
-    const countdownEl = document.getElementById("countdown");
-    setInterval(() => {
-      const now = new Date().getTime();
-      const distance = countdownTarget - now;
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      countdownEl.innerHTML = `${days} hari ${hours} jam ${minutes} menit ${seconds} detik`;
-    }, 1000);
-
-    function addComment(event) {
-      event.preventDefault();
-      const name = document.getElementById("name").value;
-      const comment = document.getElementById("comment").value;
-      const div = document.createElement("div");
-      div.innerHTML = `<p><strong>${name}</strong>: ${comment}</p>`;
-      document.getElementById("commentList").prepend(div);
-      event.target.reset();
-    }
-  </script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const guest = urlParams.get('to');
+      if (guest) {
+        document.getElementById("guest-name").textContent = decodeURIComponent(guest.replace(/\+/g, ' '));
+      }
+    </script>
 </body>
 </html>
