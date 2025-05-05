@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Pernikahan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(to bottom, #fffaf5, #f3e9e1);
+      color: #333;
+    }
+    .opening {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('cover.jpg') center center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      color: white;
+      text-align: center;
+    }
+    .opening h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+    }
+    .opening button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background: #fff;
+      color: #333;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    header {
+      background: url('cover.jpg') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+    }
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+    }
+    header p {
+      font-size: 1.2rem;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    section:nth-child(even) {
+      background-color: #fdf7f3;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+      animation: fadeInUp 1s ease forwards;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    section h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #8c5b4a;
+    }
+    hr.decor {
+      width: 200px;
+      border: 1px solid #d4b8a3;
+      margin: 30px auto;
+    }
+    .photo-section img {
+      width: 100%;
+      border-radius: 16px;
+      border: 4px solid #e3c6b0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    footer {
+      background-color: #f1e9e1;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.9rem;
+    }
+    .music-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      z-index: 999;
+    }
+    .music-toggle:hover {
+      background: #f1e9e1;
+    }
+    #main-content { display: none; }
+    .countdown { text-align: center; font-size: 1.5rem; margin-top: 20px; }
+    .map-container iframe { width: 100%; height: 300px; border: none; }
+    .rsvp-form { text-align: center; }
+    .rsvp-form textarea { width: 100%; height: 100px; margin-top: 10px; padding: 10px; }
+  </style>
+</head>
+<body>
+  <div class="opening" id="opening">
+    <h1>M. Yudha & Meilia</h1>
+    <button onclick="openInvitation()">Buka Undangan</button>
+  </div>
+
+  <div id="main-content">
+    <header>
+      <h1>M. Yudha Oktaviandra, S.M & Meilia Ardiza, S.M</h1>
+      <p>Kepada Yth. Bapak/Ibu/Saudara/i</p>
+    </header>
+
+    <section class="visible">
+      <h2>Akad Nikah</h2>
+      <hr class="decor">
+      <p>Sabtu, 1 Juni 2025<br>Pukul 08.00 WIB<br>SMart Hotel Lubuklinggau</p>
+    </section>
+
+    <section class="visible">
+      <h2>Resepsi</h2>
+      <hr class="decor">
+      <p>Sabtu, 1 Juni 2025<br>Pukul 11.00 WIB<br>SMart Hotel Lubuklinggau</p>
+    </section>
+
+    <section class="visible photo-section">
+      <h2>Foto Kami</h2>
+      <hr class="decor">
+      <img src="foto1.jpg" alt="Foto Mempelai 1">
+      <img src="foto2.jpg" alt="Foto Mempelai 2">
+    </section>
+
+    <section class="visible countdown">
+      <h2>Hitung Mundur</h2>
+      <hr class="decor">
+      <div id="countdown"></div>
+    </section>
+
+    <section class="visible map-container">
+      <h2>Lokasi Acara</h2>
+      <hr class="decor">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63724.177642632575!2d102.8630749!3d-3.2995869!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e30e69514f6b261%3A0xb10a21c176d5ba15!2sSMart%20Hotel%20Lubuklinggau!5e0!3m2!1sid!2sid!4v1714900000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <section class="visible rsvp-form">
+      <h2>RSVP & Ucapan</h2>
+      <hr class="decor">
+      <form onsubmit="addComment(event)">
+        <input type="text" id="name" placeholder="Nama Anda" required><br>
+        <textarea id="comment" placeholder="Ucapan Anda" required></textarea><br>
+        <button type="submit">Kirim</button>
+      </form>
+      <div id="commentList"></div>
+    </section>
+
+    <footer>
+      Terima kasih telah hadir dalam hari bahagia kami.
+    </footer>
+
+    <div class="music-toggle" onclick="toggleMusic()">🎵</div>
+    <audio id="bg-music" src="audio/lagu.mp3" loop autoplay></audio>
+  </div>
+
+  <script>
+    const audio = document.getElementById("bg-music");
+    function toggleMusic() {
+      if (audio.paused) { audio.play(); } else { audio.pause(); }
+    }
+
+    function openInvitation() {
+      document.getElementById("opening").style.display = "none";
+      document.getElementById("main-content").style.display = "block";
+      audio.play();
+    }
+
+    const countdownTarget = new Date("2025-06-01T08:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownTarget - now;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdownEl.innerHTML = `${days} hari ${hours} jam ${minutes} menit ${seconds} detik`;
+    }, 1000);
+
+    function addComment(event) {
+      event.preventDefault();
+      const name = document.getElementById("name").value;
+      const comment = document.getElementById("comment").value;
+      const div = document.createElement("div");
+      div.innerHTML = `<p><strong>${name}</strong>: ${comment}</p>`;
+      document.getElementById("commentList").prepend(div);
+      event.target.reset();
+    }
+  </script>
+</body>
+</html>
