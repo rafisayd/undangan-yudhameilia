@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Undangan Pernikahan</title>
+  <title>Undangan Acara Ngunduh Mantu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -30,10 +30,13 @@
       z-index: 9999;
       color: white;
       text-align: center;
+      padding: 20px;
+      backdrop-filter: brightness(0.5);
     }
     .opening h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 3rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
     }
     .opening button {
       margin-top: 20px;
@@ -44,6 +47,7 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
     header {
       background: url('cover.jpg') no-repeat center center/cover;
@@ -54,6 +58,8 @@
       flex-direction: column;
       text-align: center;
       color: white;
+      padding: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
     header h1 {
       font-family: 'Great Vibes', cursive;
@@ -146,15 +152,30 @@
     </header>
 
     <section class="visible">
-      <h2>Akad Nikah</h2>
+      <h2>UNDANGAN – Acara Ngunduh Mantu</h2>
       <hr class="decor">
-      <p>Sabtu, 17 Mei 2025<br>Pukul 08.00 WIB<br>SMart Hotel Lubuklinggau</p>
-    </section>
-
-    <section class="visible">
-      <h2>Resepsi</h2>
-      <hr class="decor">
-      <p>Sabtu, 17 Mei 2025<br>Pukul 11.00 WIB<br>SMart Hotel Lubuklinggau</p>
+      <p style="text-align: center">
+        Bismillahirrahmanirrahim<br><br>
+        Dengan memohon rahmat dan ridho Allah SWT,<br>
+        kami bermaksud menyelenggarakan acara <strong>Ngunduh Mantu</strong> putra kami:<br><br>
+        <strong>M. Yudha Oktaviandra, S.M</strong><br>
+        Putra dari Bapak IPTU Rahmat M. Dalimunthe & Ibu Devi Susanti<br><br>
+        dengan menantu kami:<br><br>
+        <strong>Meilia Ardiza, S.M</strong><br>
+        Putri dari Bapak Hatta & Ibu Salmi Hardinata (Helmi)<br><br>
+        Yang insya Allah akan dilaksanakan pada:<br><br>
+        <strong>Hari / Tanggal:</strong> Sabtu, 17 Mei 2025<br>
+        <strong>Waktu:</strong> Pukul 08.00 WIB s.d. selesai<br>
+        <strong>Tempat:</strong><br>
+        BALLROOM SMART HOTEL<br>
+        Jl. Yos Sudarso, Kel. Jawa Kanan SS<br>
+        Kec. Lubuk Linggau Timur II, Kota Lubuk Linggau<br><br>
+        Merupakan kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i<br>
+        berkenan hadir untuk memberikan doa restu kepada putra-putri kami.<br><br>
+        Wassalamu’alaikum warahmatullahi wabarakatuh.<br><br>
+        Hormat kami,<br>
+        Keluarga Besar Bapak IPTU Rahmat M. Dalimunthe & Ibu Devi Susanti
+      </p>
     </section>
 
     <section class="visible photo-section">
@@ -192,7 +213,7 @@
     </footer>
 
     <div class="music-toggle" onclick="toggleMusic()">🎵</div>
-    <audio id="bg-music" src="audio/lagu.mp3" loop autoplay></audio>
+    <audio id="bg-music" src="" loop autoplay muted></audio>
   </div>
 
   <script>
