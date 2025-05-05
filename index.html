@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Undangan Acara Ngunduh Mantu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Roboto+Serif:opsz@8..144&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -28,18 +28,23 @@
       align-items: center;
       justify-content: center;
       z-index: 9999;
-      color: #222;
+      color: #fff;
       text-align: center;
       padding: 20px;
       backdrop-filter: brightness(0.5);
     }
     .opening h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      color: #fff;
-      background-color: rgba(0, 0, 0, 0.6);
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8rem;
+      background-color: rgba(0, 0, 0, 0.5);
       padding: 10px 20px;
       border-radius: 10px;
+    }
+    .opening p {
+      font-family: 'Roboto Serif', serif;
+      font-size: 1.1rem;
+      color: #f8f8f8;
+      margin-top: 10px;
     }
     .opening button {
       margin-top: 20px;
@@ -60,16 +65,18 @@
       justify-content: center;
       flex-direction: column;
       text-align: center;
-      color: white;
+      color: #222;
       padding: 20px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      text-shadow: none;
     }
     header h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: #222;
     }
     header p {
       font-size: 1.2rem;
+      color: #333;
     }
     section {
       padding: 60px 20px;
@@ -145,6 +152,7 @@
 <body>
   <div class="opening" id="opening">
     <h1>M. Yudha & Meilia</h1>
+    <p>Kepada Yth. <span id="guest-name">Bapak/Ibu/Saudara/i</span></p>
     <button onclick="openInvitation()">Buka Undangan</button>
   </div>
 
@@ -154,47 +162,71 @@
       <p>Kepada Yth. <span id="guest-name">Bapak/Ibu/Saudara/i</span></p>
     </header>
 
-    <!-- (bagian lain tetap sama) -->
+    <section>
+      <h2>Undangan – Acara Ngunduh Mantu</h2>
+      <p style="text-align: center; max-width: 700px; margin: auto;">
+        Bismillahirrahmanirrahim<br><br>
+        Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan acara Ngunduh Mantu putra kami:<br><br>
+        <strong>M. Yudha Oktaviandra, S.M</strong><br>
+        Putra dari Bapak IPTU Rahmat M. Dalimunthe & Ibu Devi Susanti<br><br>
+        dengan menantu kami:<br><br>
+        <strong>Meilia Ardiza, S.M</strong><br>
+        Putri dari Bapak Hatta & Ibu Salmi Hardinata (Helmi)<br><br>
+        Yang insya Allah akan dilaksanakan pada:<br><br>
+        <strong>Hari / Tanggal:</strong> Sabtu, 17 Mei 2025<br>
+        <strong>Waktu:</strong> Pukul 08.00 WIB s.d. selesai<br>
+        <strong>Tempat:</strong><br>
+        Ballroom Smart Hotel<br>
+        Jl. Yos Sudarso, Kel. Jawa Kanan SS<br>
+        Kec. Lubuk Linggau Timur II, Kota Lubuk Linggau<br><br>
+        Merupakan kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada putra-putri kami.<br><br>
+        Wassalamu’alaikum warahmatullahi wabarakatuh.
+      </p>
+    </section>
 
-    <script>
-      const audio = document.getElementById("bg-music");
-      function toggleMusic() {
-        if (audio.paused) { audio.play(); } else { audio.pause(); }
-      }
+    <section class="photo-section">
+      <h2>Foto Kenangan</h2>
+      <hr class="decor">
+      <img src="foto1.jpg" alt="Foto Pasangan">
+      <img src="foto2.jpg" alt="Foto Prewedding">
+    </section>
 
-      function openInvitation() {
-        document.getElementById("opening").style.display = "none";
-        document.getElementById("main-content").style.display = "block";
-        audio.play();
-      }
+    <section>
+      <h2>Lokasi Acara</h2>
+      <hr class="decor">
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18..." allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </section>
 
-      const countdownTarget = new Date("2025-05-17T08:00:00").getTime();
-      const countdownEl = document.getElementById("countdown");
-      setInterval(() => {
-        const now = new Date().getTime();
-        const distance = countdownTarget - now;
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        countdownEl.innerHTML = `${days} hari ${hours} jam ${minutes} menit ${seconds} detik`;
-      }, 1000);
+    <section class="rsvp-form">
+      <h2>Ucapan & Doa</h2>
+      <hr class="decor">
+      <form>
+        <textarea placeholder="Tulis ucapan dan doa untuk kedua mempelai..."></textarea>
+        <br>
+        <button type="submit">Kirim</button>
+      </form>
+    </section>
 
-      function addComment(event) {
-        event.preventDefault();
-        const name = document.getElementById("name").value;
-        const comment = document.getElementById("comment").value;
-        const div = document.createElement("div");
-        div.innerHTML = `<p><strong>${name}</strong>: ${comment}</p>`;
-        document.getElementById("commentList").prepend(div);
-        event.target.reset();
-      }
+    <footer>
+      <p>© 2025 M. Yudha & Meilia. All rights reserved.</p>
+    </footer>
+  </div>
 
-      const urlParams = new URLSearchParams(window.location.search);
-      const guest = urlParams.get('to');
-      if (guest) {
-        document.getElementById("guest-name").textContent = decodeURIComponent(guest.replace(/\+/g, ' '));
-      }
-    </script>
+  <script>
+    function openInvitation() {
+      document.getElementById("opening").style.display = "none";
+      document.getElementById("main-content").style.display = "block";
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const guest = urlParams.get('to');
+    if (guest) {
+      document.querySelectorAll("#guest-name").forEach(el => {
+        el.textContent = decodeURIComponent(guest.replace(/\+/g, ' '));
+      });
+    }
+  </script>
 </body>
 </html>
